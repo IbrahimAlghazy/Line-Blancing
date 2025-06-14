@@ -1,0 +1,1044 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ibrahim Ayman</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Noto+Sans+Arabic:wght@300;400;500;600;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Lora:wght@400;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f0f2f5;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 10px;
+        }
+        .container {
+            background-color: #e0f2f7;
+            border-radius: 1rem;
+            padding: 1rem;
+            max-width: 900px;
+            width: 100%;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            color: #333;
+        }
+        .section-title {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #2c5282;
+            margin-bottom: 0.75rem;
+            text-align: center;
+        }
+        .subsection-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            color: #4a5568;
+            margin-bottom: 0.5rem;
+            text-align: center;
+        }
+        .definition-item {
+            margin-bottom: 0.6rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        .definition-item::before {
+            content: '•';
+            color: #f6ad55;
+            font-size: 1.4rem;
+            line-height: 1;
+            margin-right: 0.4rem;
+            margin-top: -0.1rem;
+        }
+        .definition-term {
+            font-weight: 700;
+            color: #2c5282;
+        }
+        .process-stage {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            margin: 0 0.3rem;
+        }
+        .process-icon {
+            font-size: 2.8rem;
+            margin-bottom: 0.4rem;
+            color: #3182ce;
+        }
+        .process-arrow {
+            font-size: 1.8rem;
+            color: #4a5568;
+            margin: 0 0.3rem;
+        }
+        .table-header {
+            background-color: #a0aec0;
+            color: white;
+            font-weight: 600;
+        }
+        .table-row:nth-child(even) {
+            background-color: #edf2f7;
+        }
+        .highlight-text {
+            color: #e66a00;
+            font-weight: 600;
+        }
+        .important-note-list {
+            list-style: none;
+            padding-left: 0;
+        }
+        .important-note-list li {
+            margin-bottom: 0.4rem;
+            display: flex;
+            align-items: flex-start;
+        }
+        .important-note-list li::before {
+            content: '•';
+            color: #e66a00;
+            font-size: 1.4rem;
+            line-height: 1;
+            margin-right: 0.4rem;
+            margin-top: -0.1rem;
+        }
+        .footer-layout {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            background-color: #e0f2f7;
+            border-radius: 1rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        }
+        .signature-text-group {
+            text-align: center;
+            flex-grow: 1;
+            padding: 0 0.5rem;
+        }
+        .signature-name {
+            font-family: 'Lora', serif;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #1e40af;
+            margin-bottom: 0.2rem;
+        }
+        .signature-title {
+            font-family: 'Lora', serif;
+            font-size: 1rem;
+            font-weight: 500;
+            color: #3b82f6;
+        }
+        .contact-item-footer {
+            display: flex;
+            align-items: center;
+            color: #4a5568;
+            font-size: 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+            text-decoration: none;
+            margin-top: -0.4rem;
+        }
+        .contact-item-footer:hover {
+            color: #2c5282;
+        }
+        .contact-item-footer i {
+            font-size: 1.3rem;
+            margin-right: 0.4rem;
+            color: #3182ce;
+        }
+
+        .language-switcher {
+            display: flex;
+            justify-content: flex-end;
+            margin-bottom: 0.5rem;
+            gap: 0.4rem;
+        }
+        .language-switcher button {
+            background-color: #a0aec0;
+            color: white;
+            padding: 0.4rem 0.8rem;
+            border-radius: 0.4rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .language-switcher button:hover {
+            background-color: #718096;
+        }
+        .language-switcher button.active {
+            background-color: #3182ce;
+        }
+
+        #llmResponseContent {
+            text-align: left;
+        }
+        #llmResponseContent ul {
+            list-style-type: disc;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        #llmResponseContent ol {
+            list-style-type: decimal;
+            padding-left: 1.5rem;
+            margin-top: 0.5rem;
+            margin-bottom: 0.5rem;
+        }
+        #llmResponseContent li {
+            margin-bottom: 0.25rem;
+        }
+        #llmResponseContent p {
+            margin-bottom: 0.75rem;
+        }
+        #llmResponseContent strong {
+            font-weight: 700;
+        }
+        #llmResponseContent em {
+            font-style: italic;
+        }
+
+        .bottleneck-row {
+            background-color: #ffe0b2;
+            border-left: 4px solid #ff9800;
+        }
+        html[dir="rtl"] .bottleneck-row {
+            border-left: none;
+            border-right: 4px solid #ff9800;
+        }
+        .bottleneck-indicator {
+            display: flex;
+            align-items: center;
+            color: #ff9800;
+            font-weight: bold;
+            margin-right: 0.5rem;
+            font-size: 1.1rem;
+        }
+        html[dir="rtl"] .bottleneck-indicator {
+            margin-right: 0;
+            margin-left: 0.5rem;
+        }
+        .bottleneck-icon {
+            font-size: 1.2em;
+            margin-right: 0.2em;
+        }
+        html[dir="rtl"] .bottleneck-icon {
+            margin-right: 0;
+            margin-left: 0.2em;
+        }
+
+        .suggest-stage-btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            transition: background-color 0.3s ease;
+            font-size: 0.875rem;
+        }
+        .suggest-stage-btn:hover {
+            background-color: #45a049;
+        }
+
+        .input-highlight {
+            background-color: #e6f0fa;
+            border-color: #93c5fd;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+        }
+        .input-highlight:focus {
+            border-color: #3b82f6;
+            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            body {
+                padding: 5px;
+            }
+            .container {
+                padding: 0.75rem;
+            }
+            .footer-layout {
+                flex-direction: column;
+                align-items: center;
+                gap: 0.75rem;
+                padding: 0.75rem;
+            }
+            .signature-text-group {
+                text-align: center;
+            }
+            .contact-item-footer {
+                justify-content: center;
+                margin-top: 0;
+                font-size: 0.9rem;
+            }
+            .language-switcher {
+                justify-content: center;
+            }
+            .process-arrow {
+                font-size: 1.2rem;
+                margin: 0 0.15rem;
+            }
+            .process-stage {
+                margin: 0 0.15rem;
+            }
+            h1.text-3xl {
+                font-size: 1.8rem;
+            }
+            h2.text-2xl {
+                font-size: 1.3rem;
+            }
+            .signature-name {
+                font-size: 1.3rem;
+            }
+            .signature-title {
+                font-size: 0.9rem;
+            }
+            .table-header th, .table-row td {
+                padding: 0.5rem 0.75rem;
+            }
+        }
+
+        html[dir="rtl"] {
+            text-align: right;
+        }
+        html[dir="rtl"] .definition-item::before {
+            margin-right: 0;
+            margin-left: 0.4rem;
+        }
+        html[dir="rtl"] .definition-item {
+            text-align: right;
+        }
+        html[dir="rtl"] .contact-item-footer i {
+            margin-right: 0;
+            margin-left: 0.4rem;
+        }
+        html[dir="rtl"] .signature-text-group {
+            text-align: center;
+        }
+        html[dir="rtl"] .footer-layout {
+            flex-direction: row-reverse;
+        }
+        html[dir="rtl"] .footer-layout a:first-child {
+            margin-left: 0.4rem;
+            margin-right: 0;
+        }
+        html[dir="rtl"] .footer-layout a:last-child {
+            margin-right: 0.4rem;
+            margin-left: 0;
+        }
+        html[dir="rtl"] .contact-item-footer i {
+            margin-right: 0;
+            margin-left: 0.4rem;
+        }
+        html[dir="rtl"] [data-lang-section="definitions"] {
+            text-align: right;
+        }
+        html[dir="rtl"] [data-lang-section="demandTime"] {
+            text-align: right;
+        }
+        html[dir="rtl"] .table-header th {
+            text-align: right;
+        }
+        html[dir="rtl"] .bg-orange-50 {
+            border-left: none;
+            border-right: 4px solid #e66a00;
+        }
+        html[dir="rtl"] #llmResponseContent {
+            text-align: right;
+        }
+        html[dir="rtl"] #llmResponseContent ul {
+            padding-left: 0;
+            padding-right: 1.2rem;
+        }
+        html[dir="rtl"] #llmResponseContent ol {
+            padding-left: 0;
+            padding-right: 1.2rem;
+        }
+        html[dir="rtl"] #llmResponseContent p {
+            text-align: right;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="language-switcher">
+            <button id="lang-en" class="active">English</button>
+            <button id="lang-ar">العربية</button>
+        </div>
+
+        <div class="text-center mb-8">
+            <h1 class="text-3xl md:text-4xl font-extrabold text-gray-800 leading-tight" data-lang-key="mainHeaderH1">
+                A Practical Example to <span class="text-blue-700" data-lang-key="mainHeaderH1Highlight">Understand Line Balancing</span>
+            </h1>
+            <h2 class="text-2xl md:text-3xl font-bold text-gray-800 mt-2" data-lang-key="mainHeaderH2">
+                And Never Forget It Again!
+            </h2>
+            <hr class="border-t-4 border-orange-400 w-24 mx-auto mt-4 rounded-full">
+        </div>
+
+        <div class="mb-8 text-left" data-lang-section="definitions">
+            <div class="definition-item">
+                <div>
+                    <span class="definition-term" data-lang-key="def1Term">Line Balancing:</span> <span data-lang-key="def1Desc">Organizing the production line so that the workflow moves as efficiently as possible - with high productivity and minimum waste.</span>
+                </div>
+            </div>
+            <div class="definition-item">
+                <div>
+                    <span class="definition-term" data-lang-key="def2Term">Bottlenecks:</span> <span data-lang-key="def2Desc">The slow points in the production process that cause delays and reduce overall efficiency.</span>
+                </div>
+            </div>
+            <div class="definition-item">
+                <div>
+                    <span class="definition-term" data-lang-key="def3Term">Takt Time:</span> <span data-lang-key="def3Desc">The time you should spend to produce one unit based on customer demand.</span>
+                </div>
+            </div>
+            <div class="definition-item">
+                <div>
+                    <span class="definition-term" data-lang-key="def4Term">Cycle Time:</span> <span data-lang-key="def4Desc">Actual time it takes to complete a task or produce one unit in the process.</span>
+                </div>
+            </div>
+        </div>
+
+        <div class="mb-8 p-6 bg-blue-100 rounded-lg shadow-inner">
+            <h3 class="section-title text-blue-800" data-lang-key="applyTitle">Now Let's Apply This to a Yogurt Production Line</h3>
+            <div class="flex flex-wrap justify-center items-center my-6 process-flow-arrows">
+                <div class="process-stage">
+                    <span class="process-icon">🥛</span>
+                    <p class="text-lg font-medium" data-lang-key="stageFilling">Filling</p>
+                </div>
+                <span class="process-arrow" data-arrow-dir="ltr">➔</span>
+                <div class="process-stage">
+                    <span class="process-icon">🧴</span>
+                    <p class="text-lg font-medium" data-lang-key="stageCapping">Capping</p>
+                </div>
+                <span class="process-arrow" data-arrow-dir="ltr">➔</span>
+                <div class="process-stage">
+                    <span class="process-icon">🌡️</span>
+                    <p class="text-lg font-medium" data-lang-key="stagePasteurizing">Pasteurizing</p>
+                </div>
+                <span class="process-arrow" data-arrow-dir="ltr">➔</span>
+                <div class="process-stage">
+                    <span class="process-icon">📦</span>
+                    <p class="text-lg font-medium" data-lang-key="stagePacking">Packing</p>
+                </div>
+                <span class="process-arrow" data-arrow-dir="ltr">➔</span>
+                <div class="process-stage">
+                    <span class="process-icon">🚚</span>
+                    <p class="text-lg font-medium" data-lang-key="stageBoxing">Boxing</p>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mt-8 p-4 bg-white rounded-lg shadow-md">
+                <div>
+                    <h4 class="font-bold text-lg mb-2 text-blue-700" data-lang-key="taktTimeInputsTitle">Calculate Takt Time:</h4>
+                    <div class="mb-3">
+                        <label for="customerDemand" class="block text-sm font-medium text-gray-700" data-lang-key="customerDemandInputLabel">Customer Demand (units/day):</label>
+                        <input type="number" id="customerDemand" value="9600" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 input-highlight" min="1">
+                    </div>
+                    <div class="mb-3">
+                        <label for="workingHours" class="block text-sm font-medium text-gray-700" data-lang-key="workingHoursInputLabel">Working Hours (hours/day):</label>
+                        <input type="number" id="workingHours" value="9" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-2 input-highlight" min="1">
+                    </div>
+                    <p class="text-lg"><span class="font-semibold" data-lang-key="calculatedTaktTimeLabel">Calculated Takt Time:</span> <span id="calculatedTaktTimeValue" class="text-orange-600 font-extrabold">3 sec per unit</span></p>
+                </div>
+
+                <div>
+                    <h4 class="font-bold text-lg mb-2 text-blue-700" data-lang-key="cycleTimeInputsTitle">Enter Stage Cycle Times:</h4>
+                    <div id="cycleTimeInputs" class="space-y-2">
+                    </div>
+                    <button id="addStageBtn" class="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-1 px-3 rounded-md shadow-sm transition duration-300 ease-in-out" data-lang-key="addStageBtn">
+                        Add Stage
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-start">
+            <div class="bg-white p-6 rounded-lg shadow-md">
+                <h3 class="subsection-title text-center mb-4" data-lang-key="cycleTimeTableTitle">Cycle Time Per Stage</h3>
+                <div class="overflow-x-auto">
+                    <table class="min-w-full bg-white rounded-lg overflow-hidden shadow-sm">
+                        <thead>
+                            <tr class="table-header">
+                                <th class="py-3 px-4 text-left" data-lang-key="tableHeaderStage">Stage</th>
+                                <th class="py-3 px-4 text-left" data-lang-key="tableHeaderCycleTime">Cycle Time (sec)</th>
+                                <th class="py-3 px-4 text-left" data-lang-key="tableHeaderActions">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="cycleTimeTableBody">
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="bg-orange-50 p-6 rounded-lg shadow-md border-l-4 border-orange-500 text-left" data-lang-section="importantNote">
+                <h3 class="subsection-title text-orange-700 mb-4" data-lang-key="noteTitle">Important Note:</h3>
+                <ul class="important-note-list text-base leading-relaxed">
+                    <li>
+                        <span class="highlight-text" data-lang-key="notePoint1">Cycle Time must be less than or equal to Takt Time.</span>
+                    </li>
+                    <li>
+                        <span class="highlight-text" data-lang-key="notePoint2">Otherwise, performance suffers and waste increases.</span>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="flex justify-center gap-4 mt-8">
+            <button id="analyzeBottlenecksBtn" class="bg-blue-600 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105" data-lang-key="analyzeBtn">
+                ✨ Analyze Bottlenecks
+            </button>
+            <button id="suggestImprovementsBtn" class="bg-green-600 hover:bg-green-700 text-white font-bold py-2 px-4 rounded-lg shadow-md transition duration-300 ease-in-out transform hover:scale-105" data-lang-key="suggestBtn">
+                ✨ Suggest Improvements
+            </button>
+        </div>
+
+        <div id="llmResponse" class="mt-8 p-6 bg-gray-50 rounded-lg shadow-inner border border-gray-200 hidden">
+            <div class="flex justify-between items-center mb-2">
+                <h4 class="font-bold text-lg text-gray-700" data-lang-key="aiInsightsTitle">AI Insights:</h4>
+                <button id="translateLlmBtn" class="bg-gray-300 hover:bg-gray-400 text-gray-800 font-bold py-1 px-2 rounded-md text-sm hidden" data-lang-key="translateBtn">
+                    Translate
+                </button>
+            </div>
+            <div id="llmResponseContent" class="text-gray-800 leading-relaxed"></div>
+            <div id="llmLoading" class="text-center text-blue-500 hidden" data-lang-key="loading">Loading...</div>
+        </div>
+
+        <div class="footer-layout">
+            <a href="https://www.linkedin.com/in/ibrahimayman" target="_blank" class="contact-item-footer">
+                <i class="fab fa-linkedin"></i> <span data-lang-key="linkedinUser">ibrahimayman</span>
+            </a>
+
+            <div class="signature-text-group">
+                <p class="signature-name" data-lang-key="signatureName">Eng. Ibrahim Ayman</p>
+                <p class="signature-title" data-lang-key="signatureTitle">Production Planning Engineer</p>
+            </div>
+
+            <a href="https://wa.me/201001569142" target="_blank" class="contact-item-footer">
+                <i class="fab fa-whatsapp"></i> <span data-lang-key="whatsappNumber">+2 01001569142</span>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const htmlElement = document.documentElement;
+            const langEnBtn = document.getElementById('lang-en');
+            const langArBtn = document.getElementById('lang-ar');
+            const analyzeBottlenecksBtn = document.getElementById('analyzeBottlenecksBtn');
+            const suggestImprovementsBtn = document.getElementById('suggestImprovementsBtn');
+            const llmResponseDiv = document.getElementById('llmResponse');
+            const llmResponseContent = document.getElementById('llmResponseContent');
+            const llmLoading = document.getElementById('llmLoading');
+            const processArrows = document.querySelectorAll('.process-arrow');
+            const translateLlmBtn = document.getElementById('translateLlmBtn');
+
+            const customerDemandInput = document.getElementById('customerDemand');
+            const workingHoursInput = document.getElementById('workingHours');
+            const calculatedTaktTimeValue = document.getElementById('calculatedTaktTimeValue');
+            const cycleTimeInputsDiv = document.getElementById('cycleTimeInputs');
+            const addStageBtn = document.getElementById('addStageBtn');
+            const cycleTimeTableBody = document.getElementById('cycleTimeTableBody');
+
+            let lastLlmRawResponse = '';
+            let lastLlmResponseLang = '';
+
+            const translations = {
+                en: {
+                    mainHeaderH1: `A Practical Example to <span class="text-blue-700">Understand Line Balancing</span>`,
+                    mainHeaderH2: `And Never Forget It Again!`,
+                    def1Term: "Line Balancing:",
+                    def1Desc: "Organizing the production line so that the workflow moves as efficiently as possible - with high productivity and minimum waste.",
+                    def2Term: "Bottlenecks:",
+                    def2Desc: "The slow points in the production process that cause delays and reduce overall efficiency.",
+                    def3Term: "Takt Time:",
+                    def3Desc: "The time you should spend to produce one unit based on customer demand.",
+                    def4Term: "Cycle Time:",
+                    def4Desc: "Actual time it takes to complete a task or produce one unit in the process.",
+                    applyTitle: "Now Let's Apply This to a Yogurt Production Line",
+                    stageFilling: "Filling",
+                    stageCapping: "Capping",
+                    stagePasteurizing: "Pasteurizing",
+                    stagePacking: "Packing",
+                    stageBoxing: "Boxing",
+                    customerDemandInputLabel: "Customer Demand (units/day):",
+                    workingHoursInputLabel: "Working Hours (hours/day):",
+                    calculatedTaktTimeLabel: "Calculated Takt Time:",
+                    unitOfTime: "sec per unit",
+                    cycleTimeInputsTitle: "Enter Stage Cycle Times:",
+                    addStageBtn: "Add Stage",
+                    tableHeaderStage: "Stage",
+                    tableHeaderCycleTime: "Cycle Time (sec)",
+                    tableHeaderActions: "Actions",
+                    tableRowFilling: "Filling",
+                    tableRowCapping: "Capping",
+                    tableRowPasteurizing: "Pasteurizing",
+                    tableRowPacking: "Packing",
+                    tableRowBoxing: "Boxing",
+                    noteTitle: "Important Note:",
+                    notePoint1: "Cycle Time must be less than or equal to Takt Time.",
+                    notePoint2: "Otherwise, performance suffers and waste increases.",
+                    analyzeBtn: "✨ Analyze Bottlenecks",
+                    suggestBtn: "✨ Suggest Improvements",
+                    aiInsightsTitle: "AI Insights:",
+                    loading: "Loading...",
+                    errorInvalidResponse: "Error: Could not get a valid response from the AI.",
+                    errorConnection: "Error: Failed to connect to the AI service.",
+                    noDataAnalyze: "No cycle time data found to analyze.",
+                    noBottleneck: (taktTime) => `Based on the provided data, there doesn't appear to be a bottleneck as all cycle times are less than or equal to the Takt Time (${taktTime} seconds).`,
+                    noDataSuggest: "No cycle time data found to suggest improvements.",
+                    noApparentBottleneck: "There's no apparent bottleneck to focus improvements on, as all stages are within Takt Time. You can still look for general efficiency gains.",
+                    signatureName: "Eng. Ibrahim Ayman",
+                    signatureTitle: "Production Planning Engineer",
+                    linkedinUser: "ibrahimayman",
+                    whatsappNumber: "+2 01001569142",
+                    removeBtn: "Remove",
+                    suggestStageBtn: "Suggest",
+                    translateBtn: "Translate"
+                },
+                ar: {
+                    mainHeaderH1: `مثال عملي عشان <span class="text-blue-700">تفهم موازنة خطوط الإنتاج</span>`,
+                    mainHeaderH2: `ومتنساهاش تاني أبدًا!`,
+                    def1Term: "موازنة خطوط الإنتاج (Line Balancing):",
+                    def1Desc: "هي عملية تنظيم خط الإنتاج لضمان سير العمل بأقصى كفاءة ممكنة، بهدف تحقيق إنتاجية عالية وتقليل الهدر لأدنى حد.",
+                    def2Term: "نقطة الاختناق (Bottleneck):",
+                    def2Desc: "هي المرحلة الأبطأ في عملية الإنتاج، والتي تتسبب في تأخيرات وتقلل من الكفاءة الإجمالية للخط.",
+                    def3Term: "وقت التاكت (Takt Time):",
+                    def3Desc: "هو الوقت المستهدف لإنتاج وحدة واحدة، ويتم تحديده بناءً على طلب العملاء لضمان تلبية احتياجات السوق.",
+                    def4Term: "وقت الدورة (Cycle Time):",
+                    def4Desc: "هو الوقت الفعلي المستغرق لإنجاز مهمة معينة أو لإنتاج وحدة واحدة خلال العملية الإنتاجية.",
+                    applyTitle: "دعنا نطبق هذا المفهوم على خط إنتاج الزبادي",
+                    stageFilling: "التعبئة",
+                    stageCapping: "التغطية",
+                    stagePasteurizing: "البسترة",
+                    stagePacking: "التعبئة النهائية",
+                    stageBoxing: "التعبئة في الكراتين",
+                    customerDemandInputLabel: "طلب العملاء (وحدة/يوم):",
+                    workingHoursInputLabel: "ساعات العمل (ساعة/يوم):",
+                    calculatedTaktTimeLabel: "وقت التاكت المحسوب:",
+                    unitOfTime: "ثانية/وحدة",
+                    cycleTimeInputsTitle: "أدخل أوقات دورة المراحل:",
+                    addStageBtn: "أضف مرحلة",
+                    tableHeaderStage: "المرحلة",
+                    tableHeaderCycleTime: "وقت الدورة (ثانية)",
+                    tableHeaderActions: "إجراءات",
+                    tableRowFilling: "التعبئة",
+                    tableRowCapping: "التغطية",
+                    tableRowPasteurizing: "البسترة",
+                    tableRowPacking: "التعبئة النهائية",
+                    tableRowBoxing: "التعبئة في الكراتين",
+                    noteTitle: "ملاحظة هامة:",
+                    notePoint1: "يجب أن يكون وقت الدورة أقل من أو يساوي وقت التاكت.",
+                    notePoint2: "وإلا، سيتأثر الأداء العام للخط ويزداد الهدر.",
+                    analyzeBtn: "✨ تحليل نقاط الاختناق",
+                    suggestBtn: "✨ اقتراح تحسينات",
+                    aiInsightsTitle: "رؤى الذكاء الاصطناعي:",
+                    loading: "جاري التحميل...",
+                    errorInvalidResponse: "حدث خطأ: لم يتم الحصول على استجابة صالحة من الذكاء الاصطناعي.",
+                    errorConnection: "حدث خطأ: فشل الاتصال بخدمة الذكاء الاصطناعي.",
+                    noDataAnalyze: "لا توجد بيانات وقت دورة للتحليل.",
+                    noBottleneck: (taktTime) => `بناءً على البيانات المتاحة، لا توجد نقطة اختناق واضحة حيث أن جميع أوقات الدورات أقل من أو تساوي وقت التاكت (${taktTime} ثوانٍ).`,
+                    noDataSuggest: "لا توجد بيانات وقت دورة لاقتراح تحسينات.",
+                    noApparentBottleneck: "لا توجد نقطة اختناق واضحة للتركيز على التحسينات، حيث أن جميع المراحل ضمن وقت التاكت. يمكن البحث عن تحسينات عامة في الكفاءة.",
+                    signatureName: "م. إبراهيم أيمن",
+                    signatureTitle: "مهندس تخطيط إنتاج",
+                    linkedinUser: "ibrahimayman",
+                    whatsappNumber: "+2 01001569142",
+                    removeBtn: "إزالة",
+                    suggestStageBtn: "اقترح",
+                    translateBtn: "ترجمة"
+                }
+            };
+
+            const updateArrows = (lang) => {
+                processArrows.forEach(arrow => {
+                    if (lang === 'ar') {
+                        arrow.textContent = '←';
+                    } else {
+                        arrow.textContent = '➔';
+                    }
+                });
+            };
+
+            const setLanguage = (lang) => {
+                htmlElement.lang = lang;
+                htmlElement.dir = (lang === 'ar') ? 'rtl' : 'ltr';
+
+                for (const key in translations[lang]) {
+                    if (key === 'mainHeaderH1') {
+                        const mainHeaderH1Element = document.querySelector(`[data-lang-key="${key}"]`);
+                        if (mainHeaderH1Element) {
+                            mainHeaderH1Element.innerHTML = translations[lang].mainHeaderH1;
+                        }
+                    } else {
+                        const element = document.querySelector(`[data-lang-key="${key}"]`);
+                        if (element) {
+                            if (typeof translations[lang][key] === 'function') {
+                                element.textContent = "...";
+                            } else {
+                                element.textContent = translations[lang][key];
+                            }
+                        }
+                    }
+                }
+
+                document.querySelectorAll('.remove-stage-btn').forEach(button => {
+                    button.textContent = translations[lang].removeBtn;
+                });
+                document.querySelectorAll('.suggest-stage-btn').forEach(button => {
+                    button.textContent = translations[lang].suggestStageBtn;
+                });
+                if (translateLlmBtn) {
+                    translateLlmBtn.textContent = translations[lang].translateBtn;
+                }
+
+                langEnBtn.classList.remove('active');
+                langArBtn.classList.remove('active');
+                if (lang === 'en') {
+                    langEnBtn.classList.add('active');
+                } else {
+                    langArBtn.classList.add('active');
+                }
+
+                updateArrows(lang);
+                calculateTaktTime();
+
+                if (!llmResponseDiv.classList.contains('hidden')) {
+                    llmResponseContent.innerHTML = '';
+                    llmLoading.classList.add('hidden');
+                    llmResponseContent.innerHTML = (lang === 'en') ? "<p>Please re-run analysis/suggestion for updated language.</p>" : translations['ar'].llmReRunMessage; // Using translation key for Arabic
+                }
+            };
+
+            const formatLLMResponse = (rawText) => {
+                let formattedHtml = '';
+                const lines = rawText.split('\n').filter(line => line.trim() !== '');
+
+                let inList = false;
+                let listType = '';
+
+                lines.forEach(line => {
+                    let processedLine = line.trim();
+
+                    processedLine = processedLine.replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>');
+                    processedLine = processedLine.replace(/\*(.*?)\*/g, '<em>$1</em>');
+
+                    const isBullet = processedLine.match(/^(-|\*)\s/);
+                    const isNumbered = processedLine.match(/^(\d+\.)\s/);
+
+                    if (isBullet) {
+                        if (!inList || listType !== 'ul') {
+                            if (inList) formattedHtml += `</${listType}>`;
+                            formattedHtml += '<ul>';
+                            listType = 'ul';
+                            inList = true;
+                        }
+                        processedLine = processedLine.replace(/^(-|\*)\s/, '');
+                        formattedHtml += `<li>${processedLine}</li>`;
+                    } else if (isNumbered) {
+                        if (!inList || listType !== 'ol') {
+                            if (inList) formattedHtml += `</${listType}>`;
+                            formattedHtml += '<ol>';
+                            listType = 'ol';
+                            inList = true;
+                        }
+                        processedLine = processedLine.replace(/^(\d+\.)\s/, '');
+                        formattedHtml += `<li>${processedLine}</li>`;
+                    } else {
+                        if (inList) {
+                            formattedHtml += `</${listType}>`;
+                            inList = false;
+                        }
+                        if (processedLine) {
+                            formattedHtml += `<p>${processedLine}</p>`;
+                        }
+                    }
+                });
+
+                if (inList) {
+                    formattedHtml += `</${listType}>`;
+                }
+
+                return formattedHtml;
+            };
+
+            langEnBtn.addEventListener('click', () => setLanguage('en'));
+            langArBtn.addEventListener('click', () => setLanguage('ar'));
+
+            const updateTableVisuals = () => {
+                const currentTaktTime = parseFloat(calculatedTaktTimeValue.textContent.split(' ')[0]);
+                const rows = cycleTimeTableBody.querySelectorAll('tr');
+
+                rows.forEach(row => {
+                    const cycleTimeInput = row.querySelector('.cycle-time-input');
+                    const bottleneckIndicator = row.querySelector('.bottleneck-indicator');
+                    const suggestButton = row.querySelector('.suggest-stage-btn');
+                    const stageNameInput = row.querySelector('.stage-name-input');
+
+                    const stageCycleTime = parseFloat(cycleTimeInput.value);
+
+                    if (isNaN(stageCycleTime) || stageCycleTime <= 0) {
+                        row.classList.remove('bottleneck-row');
+                        if (bottleneckIndicator) bottleneckIndicator.classList.add('hidden');
+                        if (suggestButton) suggestButton.classList.add('hidden');
+                        return;
+                    }
+
+                    if (stageCycleTime > currentTaktTime) {
+                        row.classList.add('bottleneck-row');
+                        if (bottleneckIndicator) bottleneckIndicator.classList.remove('hidden');
+                        if (suggestButton) {
+                            suggestButton.classList.remove('hidden');
+                            suggestButton.dataset.stageName = stageNameInput.value;
+                            suggestButton.dataset.cycleTime = stageCycleTime;
+                        }
+                    } else {
+                        row.classList.remove('bottleneck-row');
+                        if (bottleneckIndicator) bottleneckIndicator.classList.add('hidden');
+                        if (suggestButton) suggestButton.classList.add('hidden');
+                    }
+                });
+            };
+
+            const calculateTaktTime = () => {
+                const customerDemand = parseFloat(customerDemandInput.value);
+                const workingHours = parseFloat(workingHoursInput.value);
+                const currentLang = htmlElement.lang;
+
+                if (customerDemand > 0 && workingHours > 0) {
+                    const workingSecondsPerDay = workingHours * 60 * 60;
+                    const taktTime = workingSecondsPerDay / customerDemand;
+                    calculatedTaktTimeValue.textContent = `${taktTime.toFixed(2)} ${translations[currentLang].unitOfTime}`;
+                } else {
+                    calculatedTaktTimeValue.textContent = "N/A";
+                }
+                updateTableVisuals();
+            };
+
+            calculateTaktTime();
+
+            customerDemandInput.addEventListener('input', calculateTaktTime);
+            workingHoursInput.addEventListener('input', calculateTaktTime);
+
+            const addStageRow = (stageName = '', cycleTime = '', isInitial = false) => {
+                const row = document.createElement('tr');
+                row.className = 'table-row';
+                row.innerHTML = `
+                    <td class="py-2 px-4 border-b border-gray-200">
+                        <input type="text" value="${stageName}" placeholder="${translations[htmlElement.lang].tableHeaderStage}" class="stage-name-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-1">
+                    </td>
+                    <td class="py-2 px-4 border-b border-gray-200">
+                        <input type="number" value="${cycleTime}" placeholder="${translations[htmlElement.lang].tableHeaderCycleTime}" class="cycle-time-input mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-blue-500 focus:ring-blue-500 sm:text-sm p-1" step="0.1" min="0">
+                    </td>
+                    <td class="py-2 px-4 border-b border-gray-200 flex items-center justify-start">
+                        <span class="bottleneck-indicator hidden"><i class="fas fa-exclamation-triangle bottleneck-icon"></i></span>
+                        <button class="remove-stage-btn bg-red-500 hover:bg-red-600 text-white font-bold py-1 px-2 rounded-md shadow-sm transition duration-300 ease-in-out">
+                            ${translations[htmlElement.lang].removeBtn}
+                        </button>
+                        <button class="suggest-stage-btn bg-green-500 hover:bg-green-600 text-white font-bold py-1 px-2 rounded-md shadow-sm transition duration-300 ease-in-out ml-2 hidden" data-stage-name="${stageName}" data-cycle-time="${cycleTime}">
+                            ${translations[htmlElement.lang].suggestStageBtn}
+                        </button>
+                    </td>
+                `;
+                cycleTimeTableBody.appendChild(row);
+
+                row.querySelector('.remove-stage-btn').addEventListener('click', () => {
+                    row.remove();
+                    updateTableVisuals();
+                });
+                row.querySelector('.cycle-time-input').addEventListener('input', updateTableVisuals);
+                row.querySelector('.stage-name-input').addEventListener('input', updateTableVisuals);
+
+                const suggestButton = row.querySelector('.suggest-stage-btn');
+                suggestButton.addEventListener('click', (event) => {
+                    const stageName = event.target.dataset.stageName;
+                    const stageCycleTime = event.target.dataset.cycleTime;
+                    const currentLang = htmlElement.lang;
+                    const customerDemand = parseFloat(customerDemandInput.value);
+                    const workingHours = parseFloat(workingHoursInput.value);
+                    const workingSecondsPerDay = workingHours * 60 * 60;
+                    const taktTime = (customerDemand > 0 && workingSecondsPerDay > 0) ? (workingSecondsPerDay / customerDemand) : 0;
+
+                    let prompt;
+                    if (currentLang === 'en') {
+                        prompt = `For a yogurt production line, the Takt Time is ${taktTime.toFixed(2)} seconds per unit. The '${stageName}' stage has a Cycle Time of ${stageCycleTime} seconds. Suggest 3 practical and actionable ideas to improve efficiency and reduce the cycle time specifically for the '${stageName}' stage. Respond in English. Organize your response in clear, concise paragraphs. If using lists, use hyphens (-) for bullet points or numbers (1., 2.) for numbered lists. Avoid using markdown asterisks (* or **) for emphasis.`;
+                    } else {
+                        prompt = `Please translate the following request into professional Egyptian Arabic: "For a yogurt production line, the Takt Time is ${taktTime.toFixed(2)} seconds per unit. The '${stageName}' stage has a Cycle Time of ${stageCycleTime} seconds. Suggest 3 practical and actionable ideas to improve efficiency and reduce the cycle time specifically for the '${stageName}' stage. Organize your response in clear, concise paragraphs. If using lists, use hyphens (-) for bullet points or numbers (1., 2.) for numbered lists. Avoid using markdown asterisks (* or **) for emphasis."`;
+                    }
+                    callGeminiAPI(prompt);
+                });
+
+                if (!isInitial) {
+                    updateTableVisuals();
+                }
+            };
+
+            addStageRow(translations.en.tableRowFilling, 2.8, true);
+            addStageRow(translations.en.tableRowCapping, 2.7, true);
+            addStageRow(translations.en.tableRowPasteurizing, 3.2, true);
+            addStageRow(translations.en.tableRowPacking, 2.5, true);
+            addStageRow(translations.en.tableRowBoxing, 2.9, true);
+            updateTableVisuals();
+
+            addStageBtn.addEventListener('click', () => addStageRow());
+
+            const getCycleTimes = () => {
+                const data = [];
+                cycleTimeTableBody.querySelectorAll('tr').forEach(row => {
+                    const stageNameInput = row.querySelector('.stage-name-input');
+                    const cycleTimeInput = row.querySelector('.cycle-time-input');
+                    if (stageNameInput && cycleTimeInput) {
+                        const stage = stageName.value.trim(); // Changed from stageNameInput.value to stageName
+                        const cycleTime = parseFloat(cycleTimeInput.value);
+                        if (stage && !isNaN(cycleTime)) {
+                            data.push({ stage, cycleTime });
+                        }
+                    }
+                });
+                return data;
+            };
+
+            const callGeminiAPI = async (prompt, isTranslation = false) => {
+                llmResponseDiv.classList.remove('hidden');
+                llmResponseContent.innerHTML = '';
+                llmLoading.classList.remove('hidden');
+                if (translateLlmBtn) translateLlmBtn.classList.add('hidden');
+
+                let chatHistory = [];
+                chatHistory.push({ role: "user", parts: [{ text: prompt }] });
+                const payload = { contents: chatHistory };
+                const apiKey = "";
+                const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`;
+
+                try {
+                    const response = await fetch(apiUrl, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify(payload)
+                    });
+                    const result = await response.json();
+                    const currentLang = htmlElement.lang;
+
+                    if (result.candidates && result.candidates.length > 0 &&
+                        result.candidates[0].content && result.candidates[0].content.parts &&
+                        result.candidates[0].content.parts.length > 0) {
+                        const rawText = result.candidates[0].content.parts[0].text;
+                        llmResponseContent.innerHTML = formatLLMResponse(rawText);
+                        lastLlmRawResponse = rawText;
+                        lastLlmResponseLang = isTranslation ? (currentLang === 'en' ? 'ar' : 'en') : currentLang;
+                        if (translateLlmBtn) translateLlmBtn.classList.remove('hidden');
+                    } else {
+                        llmResponseContent.innerHTML = `<p>${translations[currentLang].errorInvalidResponse}</p>`;
+                        if (translateLlmBtn) translateLlmBtn.classList.add('hidden');
+                    }
+                } catch (error) {
+                    console.error('Error calling Gemini API:', error);
+                    const currentLang = htmlElement.lang;
+                    llmResponseContent.innerHTML = `<p>${translations[currentLang].errorConnection}</p>`;
+                    if (translateLlmBtn) translateLlmBtn.classList.add('hidden');
+                } finally {
+                    llmLoading.classList.add('hidden');
+                }
+            };
+
+            if (translateLlmBtn) {
+                translateLlmBtn.addEventListener('click', () => {
+                    if (!lastLlmRawResponse) return;
+
+                    const currentLang = htmlElement.lang;
+                    const targetLang = (lastLlmResponseLang === 'en') ? 'ar' : 'en';
+                    const targetLangName = (targetLang === 'en') ? 'English' : 'العربية (لهجة مصرية احترافية)';
+
+                    let translationPrompt = `Translate the following text to ${targetLangName}. Maintain its formatting (paragraphs, bullet points using hyphens or numbers, bold/italic text if present). Do not use markdown asterisks (* or **) for emphasis.\n\n${lastLlmRawResponse}`;
+                    
+                    callGeminiAPI(translationPrompt, true);
+                });
+            }
+
+            analyzeBottlenecksBtn.addEventListener('click', () => {
+                const cycleTimesData = getCycleTimes();
+                const currentLang = htmlElement.lang;
+                const customerDemand = parseFloat(customerDemandInput.value);
+                const workingHours = parseFloat(workingHoursInput.value);
+                const workingSecondsPerDay = workingHours * 60 * 60;
+                const taktTime = (customerDemand > 0 && workingSecondsPerDay > 0) ? (workingSecondsPerDay / customerDemand) : 0;
+
+                if (cycleTimesData.length === 0 || taktTime === 0) {
+                    llmResponseContent.innerHTML = `<p>${translations[currentLang].noDataAnalyze}</p>`;
+                    llmResponseDiv.classList.remove('hidden');
+                    if (translateLlmBtn) translateLlmBtn.classList.add('hidden');
+                    return;
+                }
+
+                let maxCycleTime = 0;
+                let bottleneckStage = '';
+                cycleTimesData.forEach(item => {
+                    if (item.cycleTime > maxCycleTime) {
+                        maxCycleTime = item.cycleTime;
+                        bottleneckStage = item.stage;
+                    }
+                });
+
+                if (maxCycleTime <= taktTime) {
+                    llmResponseContent.innerHTML = `<p>${translations[currentLang].noBottleneck(taktTime.toFixed(2))}</p>`;
+                    llmResponseDiv.classList.remove('hidden');
+                    if (translateLlmBtn) translateLlmBtn.classList.add('hidden');
+                    return;
+                }
+
+                let prompt;
+                if (currentLang === 'en') {
+                    prompt = `In a yogurt production line, the Takt Time is ${taktTime.toFixed(2)} seconds per unit. The stage with the highest cycle time is '${bottleneckStage}' with a Cycle Time of ${maxCycleTime} seconds. Explain why this stage is a bottleneck in simple terms and provide a brief, high-level suggestion to address this bottleneck. Respond in English. Organize your response in clear, concise paragraphs. If using lists, use hyphens (-) for bullet points or numbers (1., 2.) for numbered lists. Avoid using markdown asterisks (* or **) for emphasis.`;
+                } else {
+                    prompt = `Please translate the following request into professional Egyptian Arabic: "In a yogurt production line, the Takt Time is ${taktTime.toFixed(2)} seconds per unit. The stage with the highest cycle time is '${bottleneckStage}' with a Cycle Time of ${maxCycleTime} seconds. Explain why this stage is a bottleneck in simple terms and provide a brief, high-level suggestion to address this bottleneck. Organize your response in clear, concise paragraphs. If using lists, use hyphens (-) for bullet points or numbers (1., 2.) for numbered lists. Avoid using markdown asterisks (* or **) for emphasis."`;
+                }
+                callGeminiAPI(prompt);
+            });
+
+            suggestImprovementsBtn.addEventListener('click', () => {
+                const cycleTimesData = getCycleTimes();
+                const currentLang = htmlElement.lang;
+                const customerDemand = parseFloat(customerDemandInput.value);
+                const workingHours = parseFloat(workingHoursInput.value);
+                const workingSecondsPerDay = workingHours * 60 * 60;
+                const taktTime = (customerDemand > 0 && workingSecondsPerDay > 0) ? (workingSecondsPerDay / customerDemand) : 0;
+
+                if (cycleTimesData.length === 0 || taktTime === 0) {
+                    llmResponseContent.innerHTML = `<p>${translations[currentLang].noDataSuggest}</p>`;
+                    llmResponseDiv.classList.remove('hidden');
+                    if (translateLlmBtn) translateLlmBtn.classList.add('hidden');
+                    return;
+                }
+
+                let maxCycleTime = 0;
+                let bottleneckStage = '';
+                cycleTimesData.forEach(item => {
+                    if (item.cycleTime > maxCycleTime) {
+                        maxCycleTime = item.cycleTime;
+                        bottleneckStage = item.stage;
+                    }
+                });
+
+                if (maxCycleTime <= taktTime) {
+                    llmResponseContent.innerHTML = `<p>${translations[currentLang].noApparentBottleneck}</p>`;
+                    llmResponseDiv.classList.remove('hidden');
+                    if (translateLlmBtn) translateLlmBtn.classList.add('hidden');
+                    return;
+                }
+
+                let prompt;
+                if (currentLang === 'en') {
+                    prompt = `For a yogurt production line, the Takt Time is ${taktTime.toFixed(2)} seconds per unit. The '${bottleneckStage}' stage is identified as a bottleneck with a Cycle Time of ${maxCycleTime} seconds. Suggest 3 practical and actionable ideas to improve efficiency and reduce the cycle time specifically for the '${bottleneckStage}' stage. Respond in English. Organize your response in clear, concise paragraphs. If using lists, use hyphens (-) for bullet points or numbers (1., 2.) for numbered lists. Avoid using markdown asterisks (* or **) for emphasis.`;
+                } else {
+                    prompt = `Please translate the following request into professional Egyptian Arabic: "For a yogurt production line, the Takt Time is ${taktTime.toFixed(2)} seconds per unit. The '${bottleneckStage}' stage is identified as a bottleneck with a Cycle Time of ${maxCycleTime} seconds. Suggest 3 practical and actionable ideas to improve efficiency and reduce the cycle time specifically for the '${bottleneckStage}' stage. Organize your response in clear, concise paragraphs. If using lists, use hyphens (-) for bullet points or numbers (1., 2.) for numbered lists. Avoid using markdown asterisks (* or **) for emphasis."`;
+                }
+                callGeminiAPI(prompt);
+            });
+        });
+    </script>
+</body>
+</html>
